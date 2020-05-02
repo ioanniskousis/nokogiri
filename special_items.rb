@@ -3,8 +3,8 @@ require 'open-uri'
 require_relative 'parse'
 require_relative 'strings'
 
-href = ""
-items = $doc.css('.block-ibtmedia-special-item')
+href = ''
+items = doc.css('.block-ibtmedia-special-item')
 
 puts 'Special count : ' + items.count.to_s
 puts '----------------------------------------------'

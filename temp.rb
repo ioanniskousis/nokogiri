@@ -1,12 +1,11 @@
 # set the URL to scape
 # url = 'http://127.0.0.1:5500/index.html'
-url = 'https://www.newsweek.com'
+# url = 'https://www.newsweek.com'
 # url = 'https://www.nytimes.com'
 # url = 'https://www.sudokun.com'
 # url = 'https://www.plaisio.gr/pc-perifereiaka/laptops/business-laptops/windows-10-pro-64-bit/sortby-price'
 # url = 'https://www.amazon.co.uk/b/?node=1340509031&ref_=Oct_s9_apbd_odnav_hd_bw_b2Lt8_2&pf_rd_r=T8VCQMVHXRVAA851KB42&pf_rd_p=9fcaa2d5-b1f2-556b-a30a-2137dcb9bdf3&pf_rd_s=merchandised-search-11&pf_rd_t=BROWSE&pf_rd_i=560798'
 # url = 'https://www.udacity.com'
-
 
 # loop through an array of objects matching a CSS selector
 # links = doc.css('a.fd-card')
@@ -45,9 +44,8 @@ url = 'https://www.newsweek.com'
 #       # else
 #         puts block_title.inner_html.strip
 #       # end
-    
+
 #     end
 #   end
 #   # puts link.content
 # end
-

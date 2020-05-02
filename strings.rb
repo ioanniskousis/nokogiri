@@ -1,6 +1,8 @@
 class String
   def uni_flat
-    str = self.gsub('&#x2019;', '\'')
+    str = gsub('&#x2019;', '\'')
+    str = str.gsub('</span>', '')
+    str = str.gsub('<span>', '')
     str
   end
 end
