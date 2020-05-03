@@ -1,5 +1,5 @@
 class Source
-  attr_reader :caption, :url, :section_hashes, :sections, :errors
+  attr_reader :caption, :url, :sections, :errors
 
   def initialize(hash)
     @caption = hash[:caption]

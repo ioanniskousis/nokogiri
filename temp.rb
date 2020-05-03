@@ -1,3 +1,18 @@
+require 'nokogiri'
+require 'open-uri'
+require_relative 'source'
+require_relative 'section'
+require_relative 'article'
+require_relative 'newsweek'
+
+newsweek_hash = {}
+newsweek_hash.extend(NewsWeek)
+newsweek_hash.setup
+source = Source.new(newsweek_hash)
+source.open
+
+puts source.sections.to_s
+
 # set the URL to scape
 # url = 'http://127.0.0.1:5500/index.html'
 # url = 'https://www.newsweek.com'

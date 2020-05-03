@@ -8,14 +8,6 @@ class Section
     @articles = []
     set_title(hash, @container)
     @valid = !@title.nil?
-    # if !@valid
-    #   puts " " + hash.to_s
-    #   gets
-    # end
-    # if @title.upcase == 'LATEST NEWS'
-    #   puts " " + hash.to_s
-    #   gets
-    # end
     load_articles(hash, @container) if @valid
   end
 

@@ -90,7 +90,6 @@ def show_article_info
 end
 
 def handle_source_input(inp)
-  # puts 'handle_source_input ' + @sources.count.to_s + imp.to_s
   return if (1..@sources.count).none?(inp)
 
   return unless @sources[inp - 1].open
