@@ -1,9 +1,11 @@
 require 'nokogiri'
 require 'open-uri'
-
 require_relative 'source'
 require_relative 'section'
 require_relative 'article'
+
+require_relative 'newsweek'
+require_relative 'nytimes'
 
 PADDING = '    '.freeze
 PROGRAM_STATUS_SOURCES = 1
@@ -12,11 +14,17 @@ PROGRAM_STATUS_ARTICLES = 3
 PROGRAM_STATUS_ART_INFO = 4
 @program_status = 1
 
-require_relative 'newsweek'
-require_relative 'nytimes'
+newsweek_hash = {}
+newsweek_hash.extend(NewsWeek)
+newsweek_hash.setup
+
+nytime_hash = {}
+nytime_hash.extend(NewYorkTimes)
+nytime_hash.setup
+
 @sources = []
-@sources << Source.new($source_hash1)
-@sources << Source.new($source_hash2)
+@sources << Source.new(newsweek_hash)
+@sources << Source.new(nytime_hash)
 
 @current_source = nil
 @current_section = nil
@@ -123,8 +131,10 @@ loop do
 
   show_article_info if @program_status == PROGRAM_STATUS_ART_INFO
 
+  fputs 'Enter "z" to end the program'
   fprint ''
   inp = gets.chomp
+
   handle_return if inp.size.zero? || (@program_status == PROGRAM_STATUS_ART_INFO)
   handle_articles_input(inp.to_i) if @program_status == PROGRAM_STATUS_ARTICLES
   handle_sections_input(inp.to_i) if @program_status == PROGRAM_STATUS_SECTIONS

@@ -4,11 +4,6 @@ def extract_title(*args)
   block_title = args[0]
   ancor_start = block_title.index('<a ')
   unless ancor_start.nil?
-    # puts "** " + element.to_s #.get_attribute('href')
-    # a = element.css('a')
-    # puts 'a = ' + a.to_s
-    # puts "** " + a.get_attribute('href')
-    # puts '-----------------------------'
     ancor_end = block_title.index('>')
     block_title = block_title[ancor_end + 1..-1]
     closing = block_title.index('</a>')
@@ -35,7 +30,7 @@ def text_lines(text, padding)
   lines = []
   until r_text.nil?
     str_index = line_size - 1
-    str_index = shift_index(r_text, str_index) if r_text.index(' ') && (r_text.size > line_size)
+    str_index = shift_index(r_text, str_index) if r_text.index(' ') && (r_text.size > str_index)
     line = r_text[0..str_index]
     lines << line
     r_text = r_text[(str_index + 1)..-1]

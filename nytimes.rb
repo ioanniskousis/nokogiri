@@ -1,30 +1,39 @@
-section_hashes2 = []
+module NewYorkTimes
+  def setup
+    self[:caption] = 'New York Times'
+    self[:url] = 'https://www.nytimes.com'
+    section_hashes = []
+    section_hashes << hash1 << hash2 << hash3
+    self[:section_hashes] = section_hashes
+  end
 
-hash11 = {}
-hash11[:section_class] = 'css-1om4z5c'
-hash11[:title] = 'top articles'
-hash11[:article_tag] = 'article'
-hash11[:article_header_tag] = 'h2'
-hash11[:article_desc_tag] = 'p'
-section_hashes2 << hash11
+  def hash1
+    hash = {}
+    hash[:section_class] = 'css-1om4z5c'
+    hash[:title] = 'top articles'
+    hash[:article_tag] = 'article'
+    hash[:article_header_tag] = 'h2'
+    hash[:article_desc_tag] = 'p'
+    hash
+  end
 
-hash11 = {}
-hash11[:section_class] = 'css-1nivyeh'
-hash11[:title] = 'latest news'
-hash11[:article_tag] = 'article'
-hash11[:article_header_tag] = 'h2'
-hash11[:article_desc_tag] = 'p'
-section_hashes2 << hash11
+  def hash2
+    hash = {}
+    hash[:section_class] = 'css-1nivyeh'
+    hash[:title] = 'latest news'
+    hash[:article_tag] = 'article'
+    hash[:article_header_tag] = 'h2'
+    hash[:article_desc_tag] = 'p'
+    hash
+  end
 
-hash12 = {}
-hash12[:section_class] = 'css-15zaaaz'
-hash12[:title] = 'featured'
-hash12[:article_tag] = 'article'
-hash12[:article_header_tag] = 'h2'
-hash12[:article_desc_tag] = 'p'
-section_hashes2 << hash12
-
-$source_hash2 = {}
-$source_hash2[:caption] = 'New York Times'
-$source_hash2[:url] = 'https://www.nytimes.com'
-$source_hash2[:section_hashes] = section_hashes2
+  def hash3
+    hash = {}
+    hash[:section_class] = 'css-15zaaaz'
+    hash[:title] = 'featured'
+    hash[:article_tag] = 'article'
+    hash[:article_header_tag] = 'h2'
+    hash[:article_desc_tag] = 'p'
+    hash
+  end
+end
