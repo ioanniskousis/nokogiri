@@ -47,46 +47,61 @@ def show_sources
     source.errors.each { |error| fputs '* ' + error }
   end
   puts
+  puts totals_line(PADDING)
   fputs 'Select Source'
 end
 
 def show_sections
   puts
   fputs @current_source.caption
-  fputs 'SECTIONS'
+  puts top_line('SECTIONS', PADDING)
   puts
   @current_source.sections.each_with_index do |section, i|
     fputs((' ' + (i + 1).to_s)[-2..-1] + '. ' + section.title.upcase)
   end
   puts
-  fputs 'Select Section' + ' | ' + 'Press Enter Key to return to Sources'
+  puts totals_line(PADDING)
+  bottom_line = 'Select Section' + ' | ' + 'Press Enter Key to return to Sources'
+  bottom_lines = text_lines(bottom_line, PADDING.size)
+  bottom_lines.each { |line| fputs line }
 end
 
 def show_articles
   puts
   fputs @current_source.caption
-  fputs @current_section.title.upcase
+  puts top_line(@current_section.title.upcase, PADDING)
   puts
   @current_section.articles.each_with_index do |article, i|
     header = (' ' + (i + 1).to_s)[-2..-1] + '. ' + article.header
-    desc_lines = text_lines(header, PADDING.size)
-    desc_lines.each { |line| fputs line }
+    header_lines = header_lines(header, PADDING.size)
+    header_lines.each { |line| fputs line }
   end
   puts
-  fputs 'Select Article' + ' | ' + 'Press Enter Key to return to Sections'
+  puts totals_line(PADDING)
+  bottom_line = 'Select Article' + ' | ' + 'Press Enter Key to return to Sections'
+  bottom_lines = text_lines(bottom_line, PADDING.size)
+  bottom_lines.each { |line| fputs line }
 end
 
 def show_article_info
   puts
   fputs @current_source.caption
-  fputs @current_section.title.upcase
+  puts top_line(@current_section.title.upcase, PADDING)
   puts
+
   fputs 'ARTICLE INFO'
-  fputs '- ' + @current_article.header
+  header_line = '- ' + @current_article.header
+  header_lines = text_lines(header_line, PADDING.size)
+  header_lines.each { |line| fputs line }
+  puts totals_line(PADDING)
+  
   desc_lines = text_lines(@current_article.description, PADDING.size)
   desc_lines.each { |line| fputs line }
   puts
-  fputs 'Press Enter Key to return to Articles'
+  puts totals_line(PADDING)
+  bottom_line = 'Press Enter Key to return to Articles'
+  bottom_lines = text_lines(bottom_line, PADDING.size)
+  bottom_lines.each { |line| fputs line }
 end
 
 def handle_source_input(inp)
@@ -131,6 +146,7 @@ loop do
   show_article_info if @program_status == PROGRAM_STATUS_ART_INFO
 
   fputs 'Enter "z" to end the program'
+  puts totals_line(PADDING)
   fprint ''
   inp = gets.chomp
 

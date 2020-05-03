@@ -22,9 +22,26 @@ def extract_href(ancor)
   ancor
 end
 
-def text_lines(text, padding)
+def screen_width
   screen_size = IO.console.winsize
-  screen_width = screen_size[1]
+  screen_size[1]
+end
+
+def header_lines(text, padding)
+  r_text = text
+  lines = []
+  until r_text.nil?
+    line_size =  lines.count.zero? ? screen_width - (padding * 2) : screen_width - (padding * 2) - 4
+    str_index = line_size - 1
+    str_index = shift_index(r_text, str_index) if r_text.index(' ') && (r_text.size > str_index)
+    line = r_text[0..str_index]
+    lines << (lines.count.zero? ? line : (String.new(' ' * 4) + line))
+    r_text = r_text[(str_index + 1)..-1]
+  end
+  lines
+end
+
+def text_lines(text, padding)
   line_size = screen_width - (padding * 2)
   r_text = text
   lines = []
@@ -41,4 +58,14 @@ end
 def shift_index(r_text, str_index)
   str_index -= 1 while r_text[str_index] != ' '
   str_index
+end
+
+def totals_line(padding)
+  line_size = screen_width - (padding.size * 2)
+  padding + String.new('-' * line_size)
+end
+
+def top_line(text, padding)
+  line_size = screen_width - (padding.size * 2) - text.size
+  padding + String.new('_' * (line_size / 2)) + text + String.new('_' * (line_size / 2))
 end
