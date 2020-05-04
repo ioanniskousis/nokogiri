@@ -1,5 +1,6 @@
 require 'nokogiri'
 require 'open-uri'
+require_relative '../utils'
 require_relative '../source'
 require_relative '../section'
 require_relative '../article'

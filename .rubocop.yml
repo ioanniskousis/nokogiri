@@ -49,7 +49,5 @@ Style/HashTransformKeys:
   Enabled: false
 Style/HashTransformValues:
   Enabled: false
-GlobalVars:
-  AllowedVariables:
-    - $source_hash1
-    - $source_hash2
+# GlobalVars:
+#   AllowedVariables:

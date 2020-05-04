@@ -1,5 +1,5 @@
 class Source
-  attr_reader :caption, :url, :sections, :errors
+  attr_reader :caption, :url, :sections, :errors, :search_results
 
   def initialize(hash)
     @caption = hash[:caption]
@@ -7,6 +7,7 @@ class Source
     @section_hashes = hash[:section_hashes]
     @sections = []
     @errors = []
+    @search_results = []
     @loaded = false
   end
 
@@ -27,6 +28,18 @@ class Source
     @loaded = true
     @errors = []
     true
+  end
+
+  def search(srch)
+    open
+    @search_results = []
+    @sections.each do |section|
+      section.articles.each do |article|
+        in_artice = article.header.include?(srch)
+        in_descriptione = article.description.include?(srch)
+        @search_results << { section: section, article: article } if in_artice || in_descriptione
+      end
+    end
   end
 
   private

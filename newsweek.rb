@@ -1,3 +1,4 @@
+# This is a Configuration Module For Newsweek
 module NewsWeek
   def setup
     self[:caption] = 'NewsWeek'

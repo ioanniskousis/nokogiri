@@ -1,5 +1,3 @@
-require_relative 'parse'
-
 class Section
   attr_reader :title, :articles, :valid
 
