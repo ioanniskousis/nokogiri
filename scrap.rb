@@ -64,7 +64,7 @@ def show_sources
   end
   puts
   puts horz_line(PADDING)
-  fputs 'Select Source Number'
+  show_text_lines 'Select Source Number to vew articles tree'
 end
 
 def show_sections
@@ -106,8 +106,12 @@ def show_article_info
 end
 
 def show_search_request
+  puts
   if @current_source.nil?
-    
+    @sources.each { |source| fputs source.caption }
+  else
+    fputs @current_source.caption
+  end
 end
 
 def show_search_results
@@ -123,7 +127,7 @@ def show_search_results
       show_text_lines(result[:article].header)
       puts horz_line(PADDING)
     end
-end
+  end
 end
 
 def show_article_header_lines(article_header, article_index)
